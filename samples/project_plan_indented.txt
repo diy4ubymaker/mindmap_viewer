@@ -1,0 +1,19 @@
+Website Relaunch
+	Discovery
+		Stakeholder interviews
+		Analytics review
+		Competitor audit
+	Design
+		Information architecture
+		Wireframes
+		Visual design
+			Brand refresh
+			Component library
+	Build
+		CMS setup
+		Front-end templates
+		Content migration
+	Launch
+		QA & accessibility checks
+		SEO redirects
+		Go-live & monitoring

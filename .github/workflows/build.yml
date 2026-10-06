@@ -1,0 +1,39 @@
+# Builds Windows and Ubuntu releases on GitHub's machines.
+# Run it from the Actions tab ("Run workflow"), or push a tag like v1.0.0 to also
+# attach the files to a GitHub Release.
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Qt runtime libraries (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libxcb-cursor0 libxkbcommon-x11-0 libegl1 libgl1
+      - name: Inno Setup (Windows installer)
+        if: runner.os == 'Windows'
+        run: choco install innosetup -y --no-progress
+      - name: Build
+        run: python build.py --no-venv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MindMapViewer-${{ runner.os }}
+          path: release/*
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/*

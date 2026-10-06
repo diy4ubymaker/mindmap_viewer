@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head><title>Broadcast Stack</title></head>
+  <body>
+    <outline text="Broadcast Stack">
+      <outline text="Ingest">
+        <outline text="SDI capture"/>
+        <outline text="SRT / RIST contribution"/>
+        <outline text="File watch folders"/>
+      </outline>
+      <outline text="Processing">
+        <outline text="Transcoding"/>
+        <outline text="Loudness normalisation"/>
+        <outline text="Captioning &amp; translation"/>
+      </outline>
+      <outline text="Playout">
+        <outline text="Scheduling"/>
+        <outline text="Graphics overlays"/>
+        <outline text="SCTE-35 ad markers"/>
+      </outline>
+      <outline text="Distribution">
+        <outline text="MPEG-TS multicast"/>
+        <outline text="HLS / DASH packaging"/>
+        <outline text="CDN"/>
+      </outline>
+    </outline>
+  </body>
+</opml>
